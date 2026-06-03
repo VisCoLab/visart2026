@@ -46,8 +46,8 @@
         0.0
       ],
       "scale": [
+        0.9020618796348572,
         0.699999988079071,
-        0.9333333373069763,
         1.0
       ],
       "mesh": {
@@ -73,8 +73,8 @@
         0.0
       ],
       "scale": [
+        0.9110825061798096,
         0.7070000171661377,
-        0.9426666498184204,
         1.0
       ],
       "mesh": {
@@ -820,14 +820,14 @@
       "name": "front",
       "type": "CAMERA",
       "location": [
-        -0.11231103539466858,
-        -1.809702754020691,
-        1.6554546356201172
+        0.23987813293933868,
+        -1.90169095993042,
+        1.829085111618042
       ],
       "rotation_euler": [
         1.5707963705062866,
         0.0,
-        0.027044707909226418
+        0.003167130285874009
       ],
       "scale": [
         1.0,
@@ -849,9 +849,9 @@
         0.0
       ],
       "scale": [
-        0.7070000171661377,
+        0.9110825061798096,
         0.009999999776482582,
-        0.9426666498184204
+        0.7070000171661377
       ],
       "mesh": {
         "name": "Cube.009",
@@ -885,7 +885,7 @@
         "vertices_count": 4,
         "polygons_count": 1,
         "materials": [
-          "floor_5"
+          "floor_1"
         ]
       }
     },
@@ -893,14 +893,14 @@
       "name": "left bottom",
       "type": "CAMERA",
       "location": [
-        -3.284106969833374,
-        -2.2525298595428467,
-        1.1728558540344238
+        -3.650155782699585,
+        -2.413928270339966,
+        1.1887139081954956
       ],
       "rotation_euler": [
         1.6157513856887817,
         -5.788907131432097e-10,
-        -0.716529130935669
+        -0.7792521715164185
       ],
       "scale": [
         0.45052623748779297,
@@ -912,14 +912,14 @@
       "name": "left upper",
       "type": "CAMERA",
       "location": [
-        -2.8144192695617676,
-        -1.2832592725753784,
-        2.82698917388916
+        -2.994574546813965,
+        -1.304948329925537,
+        2.8519270420074463
       ],
       "rotation_euler": [
         1.2322063446044922,
         -0.04170534014701843,
-        -0.6362140774726868
+        -0.7063136100769043
       ],
       "scale": [
         0.30529069900512695,
@@ -1019,9 +1019,9 @@
       "name": "plakietka",
       "type": "MESH",
       "location": [
-        1.4140000343322754,
+        1.8221650123596191,
         -0.004999999888241291,
-        0.0
+        -0.699999988079071
       ],
       "rotation_euler": [
         1.5707963705062866,
@@ -1046,14 +1046,14 @@
       "name": "right bottom",
       "type": "CAMERA",
       "location": [
-        1.9744548797607422,
-        -0.20960700511932373,
-        1.3057502508163452
+        2.315777540206909,
+        -0.1305781751871109,
+        1.1870992183685303
       ],
       "rotation_euler": [
         1.7131325006484985,
         -0.06192294508218765,
-        6.472477436065674
+        6.483767509460449
       ],
       "scale": [
         1.0,
@@ -1065,14 +1065,14 @@
       "name": "right upper",
       "type": "CAMERA",
       "location": [
-        4.374729633331299,
-        0.8297337889671326,
-        2.7642149925231934
+        4.204564571380615,
+        -0.12240627408027649,
+        2.473998546600342
       ],
       "rotation_euler": [
         1.3207107782363892,
         -0.04344336688518524,
-        7.436750888824463
+        7.327653884887695
       ],
       "scale": [
         1.0,
@@ -1146,11 +1146,11 @@
       "textures": [
         {
           "node": "Image Texture",
-          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35155/1.jpg"
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35968/0.jpg"
         },
         {
           "slot": "Base Color",
-          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35155/1.jpg"
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35968/0.jpg"
         }
       ]
     },
@@ -1182,30 +1182,34 @@
       "textures": []
     },
     {
-      "name": "floor_5",
+      "name": "floor_1",
       "use_nodes": true,
       "properties": {
         "attribute": "Mix",
         "metallic": 0.0,
-        "roughness_attribute": "Image Texture.002",
+        "roughness_attribute": "Invert Color",
         "roughness": 0.5
       },
       "textures": [
         {
           "node": "Image Texture",
-          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_height.tiff"
+          "image": "//assets/materials/wooden-floor_a44bedec-dcf5-4df9-a410-7332ebeb4024/textures_2k/floor_wooden_height.bmp"
         },
         {
           "node": "Image Texture.001",
-          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_diffuse.jpg"
+          "image": "//assets/materials/wooden-floor_a44bedec-dcf5-4df9-a410-7332ebeb4024/textures_2k/floor_wooden_diffuse.bmp"
         },
         {
           "node": "Image Texture.002",
-          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_roughness.jpg"
+          "image": "//assets/materials/wooden-floor_a44bedec-dcf5-4df9-a410-7332ebeb4024/textures_2k/floor_wooden_glossiness.bmp"
         },
         {
           "node": "Image Texture.003",
-          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_normal_opengl.jpg"
+          "image": "//assets/materials/wooden-floor_a44bedec-dcf5-4df9-a410-7332ebeb4024/textures_2k/floor_wooden_normal.bmp"
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "//assets/materials/wooden-floor_a44bedec-dcf5-4df9-a410-7332ebeb4024/textures_2k/floor_wooden_ao.bmp"
         }
       ]
     },
