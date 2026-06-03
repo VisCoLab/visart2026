@@ -1,10 +1,11 @@
 import bpy
+from pathlib import Path
 
-def load_plakietka(obj_name: str,
-                   image_path: str):
+def load_placard(obj_name: str,
+                 image_path: str):
     obj = bpy.data.objects[obj_name]
     image = bpy.data.images.load(image_path, check_existing=True)
-    
+
     w = image.size[0]
     h = image.size[1]
     scale = 0.15
@@ -17,7 +18,7 @@ def load_plakietka(obj_name: str,
     else:
         obj.scale.x = 1 * scale
         obj.scale.y = 1 / aspect * scale
-        
+
     mat = obj.active_material
 
     if mat is None:
@@ -29,13 +30,13 @@ def load_plakietka(obj_name: str,
 
     nodes = mat.node_tree.nodes
 
-    # znajdź Principled BSDF
+    # find Principled BSDF
     bsdf = nodes.get("Principled BSDF")
 
     if bsdf is None:
-        raise Exception("Nie znaleziono Principled BSDF")
+        raise Exception("Principled BSDF not found")
 
-    # znajdź lub utwórz Image Texture
+    # find or create Image Texture
     image_node = None
 
     for node in nodes:
@@ -46,13 +47,13 @@ def load_plakietka(obj_name: str,
     if image_node is None:
         image_node = nodes.new("ShaderNodeTexImage")
 
-    # ustaw obraz
+    # set the image
     image_node.image = image
 
-    # podłącz do Base Color
+    # connect to Base Color
     links = mat.node_tree.links
 
-    # usuń stare połączenie Base Color
+    # remove the old Base Color connection
     for link in list(bsdf.inputs["Base Color"].links):
         links.remove(link)
 
@@ -61,7 +62,8 @@ def load_plakietka(obj_name: str,
         bsdf.inputs["Base Color"]
     )
 
-if __name__=="__main__":
-    obj_name = "plakietka"
-    image_path = f"/home/neerka/blender/projects/visart26/assets/textures/plakietka.png"
-    load_plakietka(obj_name, image_path)
+if __name__ == "__main__":
+    obj_name = "plakietka"  # .blend object name (kept to match the scene)
+    assets = Path(__file__).resolve().parent.parent / "assets"
+    image_path = str(assets / "textures" / "plk.png")
+    load_placard(obj_name, image_path)

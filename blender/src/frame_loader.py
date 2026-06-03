@@ -1,27 +1,27 @@
 import bpy
-import random
 import sys
-sys.path.append("/home/neerka/blender/projects/visart26/assets/scripts")
-from plakietka_reseter import reset_plakietka
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent))
+from placard_resetter import reset_placard
 
-def load_picture(canvas_name: str, 
+def load_picture(canvas_name: str,
                  frame_name: str,
                  glass_name: str,
-                 desc_name: str, 
+                 desc_name: str,
                  image_path: str,
                  margin: float):
-    # ===== POBRANIE OBIEKTU =====
+    # ===== GET OBJECTS =====
 
     obj = bpy.data.objects[canvas_name]
     frame = bpy.data.objects[frame_name]
     glass = bpy.data.objects[glass_name]
-    plakietka = bpy.data.objects[desc_name]
+    placard = bpy.data.objects[desc_name]
 
-    # ===== WCZYTANIE OBRAZU =====
+    # ===== LOAD IMAGE =====
 
     image = bpy.data.images.load(image_path, check_existing=True)
 
-    # ===== SKALOWANIE CANVASA =====
+    # ===== SCALE THE CANVAS =====
 
     w = image.size[0]
     h = image.size[1]
@@ -38,13 +38,13 @@ def load_picture(canvas_name: str,
 
     frame.scale.x = obj.scale.x * margin
     frame.scale.y = obj.scale.y * margin
-    
+
     glass.scale.x = obj.scale.x * margin
     glass.scale.z = obj.scale.y * margin
-    
-    reset_plakietka(canvas_name, desc_name, margin)
 
-    # ===== MATERIAŁ =====
+    reset_placard(canvas_name, desc_name, margin)
+
+    # ===== MATERIAL =====
 
     mat = obj.active_material
 
@@ -57,13 +57,13 @@ def load_picture(canvas_name: str,
 
     nodes = mat.node_tree.nodes
 
-    # znajdź Principled BSDF
+    # find Principled BSDF
     bsdf = nodes.get("Principled BSDF")
 
     if bsdf is None:
-        raise Exception("Nie znaleziono Principled BSDF")
+        raise Exception("Principled BSDF not found")
 
-    # znajdź lub utwórz Image Texture
+    # find or create Image Texture
     image_node = None
 
     for node in nodes:
@@ -74,13 +74,13 @@ def load_picture(canvas_name: str,
     if image_node is None:
         image_node = nodes.new("ShaderNodeTexImage")
 
-    # ustaw obraz
+    # set the image
     image_node.image = image
 
-    # podłącz do Base Color
+    # connect to Base Color
     links = mat.node_tree.links
 
-    # usuń stare połączenie Base Color
+    # remove the old Base Color connection
     for link in list(bsdf.inputs["Base Color"].links):
         links.remove(link)
 
@@ -93,8 +93,8 @@ if __name__=="__main__":
     canvas_name = "canvas"
     frame_name = "frame"
     glass_name = "glass"
-    desc_name = "plakietka"
-    idx = random.choice(range(1,1131))
-    image_path = f"/home/neerka/blender/projects/visart26/assets/textures/pictures/{idx}.jpg"
+    desc_name = "plakietka"  # .blend object name (kept to match the scene)
+    assets = Path(__file__).resolve().parent.parent / "assets"
+    image_path = str(assets / "textures" / "plk.png")
     margin = 1.01
     load_picture(canvas_name, frame_name, glass_name, desc_name, image_path, margin)

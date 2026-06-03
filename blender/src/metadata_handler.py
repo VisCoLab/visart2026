@@ -14,8 +14,8 @@ Features:
 
 from typing import Any, Optional, Tuple
 import json
-import os
 import sys
+from pathlib import Path
 
 try:
     import yaml
@@ -530,12 +530,8 @@ def dump_scene_metadata(output_path: str):
         pass
 
     # ensure directory
-    dirname = os.path.dirname(output_path)
-    if dirname and not os.path.exists(dirname):
-        try:
-            os.makedirs(dirname, exist_ok=True)
-        except Exception:
-            pass
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     if _HAS_YAML:
         with open(output_path, 'w', encoding='utf-8') as f:

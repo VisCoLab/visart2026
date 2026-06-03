@@ -1,0 +1,1260 @@
+{
+  "scene": {
+    "name": "Scene",
+    "frame_start": 1,
+    "frame_end": 250,
+    "render": {
+      "engine": "CYCLES",
+      "resolution_x": 512,
+      "resolution_y": 512,
+      "fps": 24
+    },
+    "custom_properties": {
+      "assets used": [
+        "28f4534d-4c5b-417c-bb2c-0917a829e0e3",
+        "46f86220-0fea-4ab2-902d-746f83446b95",
+        "8217428b-26e2-4b14-a803-4aadfa19babd",
+        "c1fb5185-5aa4-4acb-b634-1ae699168708",
+        "9d59a4ad-5789-4435-9f1e-621515409529",
+        "8503aefe-d01e-4ce3-94dd-5caba7cc5a84",
+        "5785c624-f1df-4da8-9bda-f6261ce3c2df",
+        "0d303e42-99a9-443e-a500-6d8578629aee",
+        "863bb6df-52d6-49eb-a369-c891712a4152",
+        "f639f213-1477-402b-a3cf-83ccefecddbe"
+      ],
+      "uuid": "e1b82226-4b79-4e00-8afc-d08606e3ec9f",
+      "assets reported": []
+    }
+  },
+  "world": {
+    "name": "ModernArtGallery.001",
+    "use_nodes": true,
+    "color": "<Color (r=0.0500, g=0.0500, b=0.0500)>"
+  },
+  "objects": [
+    {
+      "name": "canvas",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -0.05249999836087227,
+        0.0
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.699999988079071,
+        0.9333333373069763,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.004",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": [
+          "CanvasMaterial"
+        ]
+      }
+    },
+    {
+      "name": "frame",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.7070000171661377,
+        0.9426666498184204,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.005",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": [
+          "Frame",
+          "glass"
+        ]
+      }
+    },
+    {
+      "name": "frame00.001",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_0.014",
+        "vertices_count": 192,
+        "polygons_count": 200,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame01.001",
+      "type": "MESH",
+      "location": [
+        3.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_1.014",
+        "vertices_count": 192,
+        "polygons_count": 200,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame02.001",
+      "type": "MESH",
+      "location": [
+        6.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_2.012",
+        "vertices_count": 192,
+        "polygons_count": 200,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame03",
+      "type": "MESH",
+      "location": [
+        9.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_3.014",
+        "vertices_count": 288,
+        "polygons_count": 292,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame04",
+      "type": "MESH",
+      "location": [
+        12.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_4.012",
+        "vertices_count": 256,
+        "polygons_count": 264,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame05",
+      "type": "MESH",
+      "location": [
+        15.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_5.014",
+        "vertices_count": 196,
+        "polygons_count": 204,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame06",
+      "type": "MESH",
+      "location": [
+        18.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_6.014",
+        "vertices_count": 208,
+        "polygons_count": 216,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame07",
+      "type": "MESH",
+      "location": [
+        21.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_7.012",
+        "vertices_count": 256,
+        "polygons_count": 264,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame08",
+      "type": "MESH",
+      "location": [
+        24.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_8.012",
+        "vertices_count": 256,
+        "polygons_count": 264,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame09",
+      "type": "MESH",
+      "location": [
+        27.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_9.014",
+        "vertices_count": 304,
+        "polygons_count": 308,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame10",
+      "type": "MESH",
+      "location": [
+        30.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_10.013",
+        "vertices_count": 304,
+        "polygons_count": 308,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame11",
+      "type": "MESH",
+      "location": [
+        33.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_11.011",
+        "vertices_count": 244,
+        "polygons_count": 252,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame12",
+      "type": "MESH",
+      "location": [
+        36.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_12.013",
+        "vertices_count": 384,
+        "polygons_count": 400,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame13.001",
+      "type": "MESH",
+      "location": [
+        39.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_13.011",
+        "vertices_count": 384,
+        "polygons_count": 400,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame14.001",
+      "type": "MESH",
+      "location": [
+        42.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_14.011",
+        "vertices_count": 384,
+        "polygons_count": 400,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame15.001",
+      "type": "MESH",
+      "location": [
+        45.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_15.013",
+        "vertices_count": 240,
+        "polygons_count": 244,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame16.001",
+      "type": "MESH",
+      "location": [
+        48.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_16.011",
+        "vertices_count": 256,
+        "polygons_count": 264,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame17.001",
+      "type": "MESH",
+      "location": [
+        51.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_17.011",
+        "vertices_count": 256,
+        "polygons_count": 264,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame18.001",
+      "type": "MESH",
+      "location": [
+        54.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_18.013",
+        "vertices_count": 272,
+        "polygons_count": 280,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame19.001",
+      "type": "MESH",
+      "location": [
+        57.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_19.013",
+        "vertices_count": 260,
+        "polygons_count": 272,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame20.001",
+      "type": "MESH",
+      "location": [
+        60.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_20.011",
+        "vertices_count": 232,
+        "polygons_count": 244,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame21.001",
+      "type": "MESH",
+      "location": [
+        63.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_21.013",
+        "vertices_count": 352,
+        "polygons_count": 356,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame22.001",
+      "type": "MESH",
+      "location": [
+        66.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_22.011",
+        "vertices_count": 320,
+        "polygons_count": 328,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame23.001",
+      "type": "MESH",
+      "location": [
+        69.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_23.011",
+        "vertices_count": 288,
+        "polygons_count": 300,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame24",
+      "type": "MESH",
+      "location": [
+        72.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_24.013",
+        "vertices_count": 320,
+        "polygons_count": 324,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame25",
+      "type": "MESH",
+      "location": [
+        75.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_25.011",
+        "vertices_count": 288,
+        "polygons_count": 296,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "frame26",
+      "type": "MESH",
+      "location": [
+        78.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "FramePath_26.011",
+        "vertices_count": 264,
+        "polygons_count": 276,
+        "materials": [
+          "Frame"
+        ]
+      }
+    },
+    {
+      "name": "front",
+      "type": "CAMERA",
+      "location": [
+        -0.11231103539466858,
+        -1.809702754020691,
+        1.6554546356201172
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        0.027044707909226418
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "glass",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -0.06999999284744263,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.7070000171661377,
+        0.009999999776482582,
+        0.9426666498184204
+      ],
+      "mesh": {
+        "name": "Cube.009",
+        "vertices_count": 8,
+        "polygons_count": 6,
+        "materials": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "name": "Ground",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        8.0,
+        2.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": [
+          "floor_5"
+        ]
+      }
+    },
+    {
+      "name": "left bottom",
+      "type": "CAMERA",
+      "location": [
+        -3.284106969833374,
+        -2.2525298595428467,
+        1.1728558540344238
+      ],
+      "rotation_euler": [
+        1.6157513856887817,
+        -5.788907131432097e-10,
+        -0.716529130935669
+      ],
+      "scale": [
+        0.45052623748779297,
+        0.45052623748779297,
+        0.45052623748779297
+      ]
+    },
+    {
+      "name": "left upper",
+      "type": "CAMERA",
+      "location": [
+        -2.8144192695617676,
+        -1.2832592725753784,
+        2.82698917388916
+      ],
+      "rotation_euler": [
+        1.2322063446044922,
+        -0.04170534014701843,
+        -0.6362140774726868
+      ],
+      "scale": [
+        0.30529069900512695,
+        0.30529075860977173,
+        0.30529069900512695
+      ]
+    },
+    {
+      "name": "light",
+      "type": "LIGHT",
+      "location": [
+        0.0,
+        0.0,
+        3.799999952316284
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "Light instanced",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.002",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": []
+      }
+    },
+    {
+      "name": "paint_inst",
+      "type": "MESH",
+      "location": [
+        1.0274889469146729,
+        1.9999198913574219,
+        2.159079074859619
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Cube.002",
+        "vertices_count": 8,
+        "polygons_count": 6,
+        "materials": []
+      }
+    },
+    {
+      "name": "Painting",
+      "type": "EMPTY",
+      "location": [
+        0.1641024947166443,
+        2.0000009536743164,
+        1.9196466207504272
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "plakietka",
+      "type": "MESH",
+      "location": [
+        1.4140000343322754,
+        -0.004999999888241291,
+        0.0
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.25308164954185486,
+        0.15000000596046448,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.006",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": [
+          "plakietka"
+        ]
+      }
+    },
+    {
+      "name": "right bottom",
+      "type": "CAMERA",
+      "location": [
+        1.9744548797607422,
+        -0.20960700511932373,
+        1.3057502508163452
+      ],
+      "rotation_euler": [
+        1.7131325006484985,
+        -0.06192294508218765,
+        6.472477436065674
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "right upper",
+      "type": "CAMERA",
+      "location": [
+        4.374729633331299,
+        0.8297337889671326,
+        2.7642149925231934
+      ],
+      "rotation_euler": [
+        1.3207107782363892,
+        -0.04344336688518524,
+        7.436750888824463
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "Sufit",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        4.002792835235596
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        8.0,
+        2.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.003",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": [
+          "Plaster wall"
+        ]
+      }
+    },
+    {
+      "name": "Wall",
+      "type": "MESH",
+      "location": [
+        0.0,
+        2.0,
+        2.0
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        8.0,
+        2.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.001",
+        "vertices_count": 8,
+        "polygons_count": 3,
+        "materials": [
+          "Plaster wall"
+        ]
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "CanvasMaterial",
+      "use_nodes": true,
+      "properties": {
+        "metallic": 0.0,
+        "roughness": 0.7069486975669861
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35155/1.jpg"
+        },
+        {
+          "slot": "Base Color",
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35155/1.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Frame",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "colour",
+        "metallic_attribute": "metalic",
+        "metallic": 0.0,
+        "roughness_attribute": "rough",
+        "roughness": 0.5
+      },
+      "textures": []
+    },
+    {
+      "name": "glass",
+      "use_nodes": true,
+      "properties": {
+        "base_color": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "metallic": 0.0,
+        "roughness": 0.0
+      },
+      "textures": []
+    },
+    {
+      "name": "floor_5",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness_attribute": "Image Texture.002",
+        "roughness": 0.5
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_height.tiff"
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_diffuse.jpg"
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_roughness.jpg"
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "//assets/materials/wooden-floor_949b160a-3417-4048-b268-2101c85b68cc/textures_2k/floor07_normal_opengl.jpg"
+        }
+      ]
+    },
+    {
+      "name": "plakietka",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness": 0.5
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "//assets/textures/plk.png"
+        }
+      ]
+    },
+    {
+      "name": "Plaster wall",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness_attribute": "Image Texture.002",
+        "roughness": 0.5
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_height.jpg"
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_diffuse.jpg"
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_roughness.jpg"
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_normal.jpg"
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_ao.jpg"
+        }
+      ]
+    }
+  ]
+}

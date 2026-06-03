@@ -1,9 +1,10 @@
 import bpy
 import argparse
-import os
+import json
 import random
 import sys
-sys.path.append("/home/neerka/blender/projects/visart26/assets/scripts")
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent))
 
 from camera_settings import (
     reset_cameras, 
@@ -21,7 +22,7 @@ def parse_cli_args():
     parser.add_argument('--fpd', type=int, default=1, help='Frames per datapoint (int)')
     parser.add_argument('--render-mode', nargs='+', choices=('rgb', 'mask', 'depth'), default=['rgb'],
                         help='Render modes to perform: one or more of rgb, mask, depth')
-    parser.add_argument('--data-path', type=str, required=True, help='Path to input images')
+    parser.add_argument('--data-path', type=str, required=True, help='Directory of input images, or a .json manifest listing image paths')
     parser.add_argument('--save-path', type=str, required=True, help='Path to save outputs')
     parser.add_argument('--data-index', type=int, default=0, help='Start index (0-based) of files in data-path to load')
     parser.add_argument('--margin', type=float, default=1.01,
@@ -70,8 +71,8 @@ def parse_cli_args():
         'render_frames': (start, end),
         'fpd': args.fpd,
         'render_mode': tuple(args.render_mode),
-        'data_path': os.path.abspath(args.data_path),
-        'save_path': os.path.abspath(args.save_path),
+        'data_path': Path(args.data_path).resolve(),
+        'save_path': Path(args.save_path).resolve(),
         'data_index': args.data_index,
         'margin': args.margin,
         'light_shape': args.light_shape,
@@ -99,19 +100,23 @@ if __name__=="__main__":
     canvas_name = "canvas"
     frame_name = "frame"
     glass_name = "glass"
-    desc_name = "plakietka"
+    desc_name = "plakietka"  # .blend object name (kept to match the scene)
 
     cameras = bpy.data.collections.get("Cameras")
 
-    # READ DATASET PATH
-    if not os.path.isdir(data_path):
-        raise SystemExit(f'data-path does not exist or is not a directory: {data_path}')
-
-    all_files = [f for f in os.listdir(data_path) if not f.startswith('.') and os.path.isfile(os.path.join(data_path, f))]
-    data_files = sorted(all_files, key=lambda x: x.lower())
-    data_files_full = [os.path.join(data_path, f) for f in data_files]
-
-    print(f'Found {len(all_files)} files in data-path')
+    # READ DATASET PATH (directory of images, or a .json manifest of image paths)
+    if data_path.is_file() and data_path.suffix.lower() == '.json':
+        with open(data_path) as f:
+            data_files_full = [Path(p) for p in json.load(f)]
+        print(f'Loaded {len(data_files_full)} image paths from manifest {data_path.name}')
+    elif data_path.is_dir():
+        data_files_full = sorted(
+            (p for p in data_path.iterdir() if p.is_file() and not p.name.startswith('.')),
+            key=lambda p: p.name.lower(),
+        )
+        print(f'Found {len(data_files_full)} files in data-path')
+    else:
+        raise SystemExit(f'data-path must be a directory or a .json manifest: {data_path}')
 
     image_path = data_files_full[did]
 
@@ -129,7 +134,7 @@ if __name__=="__main__":
                  frame_name,
                  glass_name,
                  desc_name,
-                 image_path,
+                 str(image_path),
                  margin)
 
     for frame in range(START, END+1):
@@ -149,19 +154,19 @@ if __name__=="__main__":
                          frame_name, 
                          glass_name,
                          desc_name,
-                         image_path,
+                         str(image_path),
                          margin)
         
-        save_folder = os.path.join(save_path, f'{counter//FPD}')
+        save_folder = save_path / f'{counter//FPD}'
         for comp in renders:
             for camera in cameras.objects:
                 bpy.context.scene.camera = camera
                 bpy.context.scene.compositing_node_group = bpy.data.node_groups[comp]
                 filename = f'{counter%FPD}'+"_"+comp+f'_{camera.name}'+".png"
-                bpy.data.scenes["Scene"].render.filepath = os.path.join(save_folder, filename)
+                bpy.data.scenes["Scene"].render.filepath = str(save_folder / filename)
                 bpy.data.scenes["Scene"].render.image_settings.file_format = "PNG"
                 bpy.ops.render.render(write_still=True)
-        dump_scene_metadata(os.path.join(save_folder,'metadata.json'))
+        dump_scene_metadata(str(save_folder / 'metadata.json'))
 
         reset_cameras(og_cameras)
         print(f"Rendered datapoint {counter//FPD}, frame: {counter%FPD}")

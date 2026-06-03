@@ -1,0 +1,11 @@
+# Portable Blender install (downloaded on the cluster, not committed)
+vendor/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Local render outputs
+out/
+renders/
+slurm-*.out

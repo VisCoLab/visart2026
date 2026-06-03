@@ -1,74 +1,74 @@
-# Instrukcja uruchomienia `main.py` (po polsku)
+# Running `main.py`
 
-Ten skrypt jest przeznaczony do uruchamiania w kontekście headless Blendera (bez GUI). Przyjmuje argumenty przez `argparse` — Blender przekazuje dodatkowe argumenty po separatorze `--`.
+This script is meant to run in Blender's headless context (no GUI). It takes arguments via `argparse` — Blender passes any extra arguments after the `--` separator.
 
-**Wywołanie w trybie headless (przykład)**
+**Headless invocation (example)**
 
 ```bash
-blender -b scena.blend --python /ścieżka/do/main.py -- [ARGUMENTY]
+blender -b scene.blend --python /path/to/main.py -- [ARGUMENTS]
 ```
 
-Zamiast `scena.blend` możesz podać własny plik .blend lub uruchomić Blendera bez pliku, jeśli skrypt tworzy scenę samodzielnie.
+Instead of `scene.blend` you can pass your own `.blend` file, or run Blender without a file if the script builds the scene itself.
 
-**Dostępne argumenty**
+**Available arguments**
 
-- `--render-frames START END` : zakres klatek do renderowania; dwa całkowite liczby (START, END). START musi być <= END.
-	- Przykład: `--render-frames 1 100`
+- `--render-frames START END` : frame range to render; two integers (START, END). START must be <= END.
+	- Example: `--render-frames 1 100`
 
-- `--fpd N` : frames per datapoint — ile klatek przypada na jeden datapunkt (int). Domyślnie `1`.
-	- Przykład: `--fpd 2`
+- `--fpd N` : frames per datapoint — how many frames belong to one datapoint (int). Defaults to `1`.
+	- Example: `--fpd 2`
 
-- `--render-mode MODE [MODE ...]` : tryby renderowania; można podać jedną lub więcej z wartości `rgb`, `mask`, `depth`. Skrypt wykona wszystkie podane tryby.
-	- Przykład pojedynczy tryb: `--render-mode rgb`
-	- Przykład wiele trybów: `--render-mode rgb mask depth`
+- `--render-mode MODE [MODE ...]` : render modes; one or more of `rgb`, `mask`, `depth`. The script runs every mode given.
+	- Single-mode example: `--render-mode rgb`
+	- Multi-mode example: `--render-mode rgb mask depth`
 
-- `--data-path PATH` : ścieżka do folderu z danymi (wejściowe obrazy).
-	- Przykład: `--data-path ./data/images`
+- `--data-path PATH` : directory of input images, **or** a `.json` manifest file holding a list of image paths (consumed in the order given).
+	- Directory example: `--data-path ./data/images`
+	- Manifest example: `--data-path ./data/paintings_train_images.json`
 
-- `--save-path PATH` : ścieżka, gdzie zapisywane będą wyniki (np. obrazy, metadane).
-	- Przykład: `--save-path ./out`
+- `--save-path PATH` : path where results are written (e.g. images, metadata).
+	- Example: `--save-path ./out`
 
-- `--data-index N` : indeks (0-based) pliku w katalogu `--data-path`, od którego zaczyna się wczytywanie danych.
-	- Przykład: `--data-index 5` — skrypt zaczyna od szóstego pliku w katalogu.
+- `--data-index N` : 0-based index of the file in `--data-path` at which loading starts.
+	- Example: `--data-index 5` — the script starts from the sixth file in the directory.
 
-- `--margin F` : margines między obrazem a ramą obrazu (float). Domyślnie `1.01`.
-	- Przykład: `--margin 1.02`
+- `--margin F` : margin between the image and the picture frame (float). Defaults to `1.01`.
+	- Example: `--margin 1.02`
 
-- `--light-shape SHAPE` : kształt źródeł światła; jedno z `square`, `disk`, `random` (domyślnie `random`).
-	- Przykład: `--light-shape square`
+- `--light-shape SHAPE` : shape of the light sources; one of `square`, `disk`, `random` (default `random`).
+	- Example: `--light-shape square`
 
-- `--light-spread MIN MAX` : zakres (w stopniach) losowania kąta rozprzestrzeniania światła od MIN do MAX. Domyślnie `60 180`.
-	- Przykład: `--light-spread 45 120`
+- `--light-spread MIN MAX` : range (in degrees) from which the light spread angle is drawn, from MIN to MAX. Defaults to `60 180`.
+	- Example: `--light-spread 45 120`
 
-- `--render-resolution WIDTH HEIGHT` : rozdzielczość, w której zapisywane będą rendery (dwa inty: szerokość i wysokość).
-	- Przykład: `--render-resolution 1024 768`
+- `--render-resolution WIDTH HEIGHT` : resolution at which renders are saved (two ints: width and height).
+	- Example: `--render-resolution 1024 768`
 
-UWAGA: Gdy uruchamiasz skrypt przez `blender --python`, wszystkie argumenty skryptu muszą być podane po dwukropku `--`, np. `-- --render-frames 1 10`.
+NOTE: When you run the script via `blender --python`, all script arguments must be given after the `--` separator, e.g. `-- --render-frames 1 10`.
 
-**Przykłady użycia**
+**Usage examples**
 
-- Renderuj klatki 1–100, tryby `rgb` i `mask`, zapisuj w `./out`, wczytuj dane z `./data` zaczynając od indeksu 5, 2 klatki na datapunkt:
+- Render frames 1–100, modes `rgb` and `mask`, save to `./out`, load data from `./data` starting at index 5, 2 frames per datapoint:
 
 ```bash
-blender -b scena.blend --python /ścieżka/do/main.py -- \
+blender -b scene.blend --python /path/to/main.py -- \
 	--render-frames 1 100 --fpd 2 --render-mode rgb mask --data-path ./data --save-path ./out --data-index 5 \
 	--margin 1.02 --light-shape square --light-spread 45 120 --render-resolution 1024 768
 ```
 
-- Prosty przykład tylko z domyślnym `fpd` i jednym trybem:
+- Simple example with the default `fpd` and a single mode:
 
 ```bash
-blender -b scena.blend --python /ścieżka/do/main.py -- \
+blender -b scene.blend --python /path/to/main.py -- \
 	--render-frames 10 10 --render-mode rgb --data-path /mnt/images --save-path /mnt/save
 ```
 
-**Pomoc / debug**
+**Help / debug**
 
-Żeby zobaczyć opis wszystkich argumentów:
+To see the description of all arguments:
 
 ```bash
-blender -b --python /ścieżka/do/main.py -- --help
+blender -b --python /path/to/main.py -- --help
 ```
 
-Plik `main.py` eksportuje funkcję `parse_cli_args()` która normalizuje wartości (np. tuple dla `render_frames`, tuple dla `render_mode`, absolutne ścieżki dla `data_path` i `save_path`) — użyj jej w skrypcie, aby pobrać już sparsowane ustawienia.
-
+`main.py` exports a `parse_cli_args()` function that normalizes values (e.g. a tuple for `render_frames`, a tuple for `render_mode`, absolute paths for `data_path` and `save_path`) — use it in your script to get the already-parsed settings.
