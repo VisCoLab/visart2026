@@ -129,7 +129,8 @@ if __name__=="__main__":
     scene.render.resolution_percentage = 100
     
     # LOOP SETUP
-    counter = 1
+    counter = 0
+    loaded_dp = 0
     load_picture(canvas_name,
                  frame_name,
                  glass_name,
@@ -147,29 +148,31 @@ if __name__=="__main__":
         reset_floor('Ground')
         move_cameras()
 
-        if counter % FPD == 0:
-            did += 1
-            image_path = data_files_full[did]
-            load_picture(canvas_name, 
-                         frame_name, 
+        datapoint = counter // FPD
+        frame_in_dp = counter % FPD
+
+        if datapoint != loaded_dp:
+            loaded_dp = datapoint
+            load_picture(canvas_name,
+                         frame_name,
                          glass_name,
                          desc_name,
-                         str(image_path),
+                         str(data_files_full[did + datapoint]),
                          margin)
         
-        save_folder = save_path / f'{counter//FPD}'
+        save_folder = save_path / f'{datapoint}'
         for comp in renders:
             for camera in cameras.objects:
                 bpy.context.scene.camera = camera
                 bpy.context.scene.compositing_node_group = bpy.data.node_groups[comp]
-                filename = f'{counter%FPD}'+"_"+comp+f'_{camera.name}'+".png"
+                filename = f'{frame_in_dp}'+"_"+comp+f'_{camera.name}'+".png"
                 bpy.data.scenes["Scene"].render.filepath = str(save_folder / filename)
                 bpy.data.scenes["Scene"].render.image_settings.file_format = "PNG"
                 bpy.ops.render.render(write_still=True)
         dump_scene_metadata(str(save_folder / 'metadata.json'))
 
         reset_cameras(og_cameras)
-        print(f"Rendered datapoint {counter//FPD}, frame: {counter%FPD}")
+        print(f"Rendered datapoint {datapoint}, frame: {frame_in_dp}")
         counter += 1
 
 
