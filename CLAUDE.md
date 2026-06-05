@@ -93,6 +93,9 @@ seff <jobid>                        # resource usage after it finishes
 ```
 The script enables the GPU (`enable_gpu.py`, which prefers **CUDA** — OptiX segfaults on the tesla nodes due to a driver/RT-core version skew), runs `main.py`, and writes to `/mnt/storage_5/scratch/pl0896-03/visart-out/<jobid>/`. Defaults render 5 datapoints × 5 cameras = 25 RGB images at 512² (≈6 min on an H100); edit `RENDER_FRAMES` / `RENDER_MODE` / `RENDER_RES` to scale up.
 
+### Generated dataset
+The full synthetic dataset — **24,490 RGB images** (4,898 one-per-object MET paintings × 5 cameras, 512²) — lives in backed-up `project_data`, **not** in this repo: `/mnt/storage_6/project_data/pl0896-03/visart-dataset/` (flat layout, folder `<N>` ↔ `data/paintings_train_images_unique.json[N]`; see that directory's `README.md`). Regenerate with `sbatch slurm/render_array.sbatch` — a 5-shard SLURM array over the unique manifest `data/paintings_train_images_unique.json` (4,898 images, the one-per-object filter of `paintings_train_images.json`) — then merge the shards by global index (`shard*1000 + datapoint`).
+
 ## Conventions
 
 - Code, comments, and `blender/README.md` are in **English**. One Polish remnant is kept on purpose: the `.blend` object is named `plakietka` (placard), so the string literal `"plakietka"` stays in `main.py` / `frame_loader.py` / `placard_loader.py` to match the scene — renaming it there would break `bpy.data.objects[...]` lookups.
