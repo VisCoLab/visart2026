@@ -46,8 +46,8 @@
         0.0
       ],
       "scale": [
-        0.8838383555412292,
         0.699999988079071,
+        0.9114583134651184,
         1.0
       ],
       "mesh": {
@@ -73,8 +73,8 @@
         0.0
       ],
       "scale": [
-        0.8926767110824585,
         0.7070000171661377,
+        0.9205728769302368,
         1.0
       ],
       "mesh": {
@@ -820,14 +820,14 @@
       "name": "front",
       "type": "CAMERA",
       "location": [
-        -0.19837087392807007,
-        -1.3165785074234009,
-        1.8788421154022217
+        0.306534081697464,
+        -1.315576434135437,
+        1.6733324527740479
       ],
       "rotation_euler": [
         1.5707963705062866,
         0.0,
-        -0.023497499525547028
+        0.0011348930420354009
       ],
       "scale": [
         1.0,
@@ -849,9 +849,9 @@
         0.0
       ],
       "scale": [
-        0.8926767110824585,
+        0.7070000171661377,
         0.009999999776482582,
-        0.7070000171661377
+        0.9205728769302368
       ],
       "mesh": {
         "name": "Cube.009",
@@ -867,7 +867,7 @@
       "type": "MESH",
       "location": [
         0.0,
-        0.0,
+        -1.0,
         0.0
       ],
       "rotation_euler": [
@@ -877,7 +877,7 @@
       ],
       "scale": [
         8.0,
-        2.0,
+        3.0,
         1.0
       ],
       "mesh": {
@@ -893,14 +893,14 @@
       "name": "left bottom",
       "type": "CAMERA",
       "location": [
-        -3.1595747470855713,
-        -2.04130482673645,
-        1.3069952726364136
+        -2.6823277473449707,
+        0.3183375298976898,
+        1.2385807037353516
       ],
       "rotation_euler": [
-        1.6157513856887817,
+        1.720470666885376,
         -5.788907131432097e-10,
-        -0.732077419757843
+        -1.0987112522125244
       ],
       "scale": [
         0.45052623748779297,
@@ -912,14 +912,14 @@
       "name": "left upper",
       "type": "CAMERA",
       "location": [
-        -2.653470754623413,
-        -1.1082653999328613,
-        2.972532272338867
+        -2.2217342853546143,
+        -1.3174574375152588,
+        2.456087112426758
       ],
       "rotation_euler": [
         1.2322063446044922,
-        -0.04170534014701843,
-        -0.5715230703353882
+        0.0,
+        -0.4829977750778198
       ],
       "scale": [
         0.30529069900512695,
@@ -1019,9 +1019,9 @@
       "name": "plakietka",
       "type": "MESH",
       "location": [
-        1.785353422164917,
+        1.4140000343322754,
         -0.004999999888241291,
-        0.699999988079071
+        -0.699999988079071
       ],
       "rotation_euler": [
         1.5707963705062866,
@@ -1046,14 +1046,14 @@
       "name": "right bottom",
       "type": "CAMERA",
       "location": [
-        2.512631893157959,
-        0.4904526472091675,
-        1.4608004093170166
+        2.47160005569458,
+        -1.470594048500061,
+        1.1871247291564941
       ],
       "rotation_euler": [
-        1.7131325006484985,
-        -0.06192294508218765,
-        6.646139621734619
+        1.739411473274231,
+        -0.0,
+        0.5837264657020569
       ],
       "scale": [
         1.0,
@@ -1065,14 +1065,14 @@
       "name": "right upper",
       "type": "CAMERA",
       "location": [
-        4.802143573760986,
-        0.6506640315055847,
-        2.7263782024383545
+        3.6900367736816406,
+        -0.09226694703102112,
+        2.8340439796447754
       ],
       "rotation_euler": [
-        1.3207107782363892,
-        -0.04344336688518524,
-        7.494919300079346
+        1.3728032112121582,
+        -0.0,
+        1.1107845306396484
       ],
       "scale": [
         1.0,
@@ -1081,12 +1081,66 @@
       ]
     },
     {
+      "name": "Sidewall_1",
+      "type": "MESH",
+      "location": [
+        8.0,
+        -1.0,
+        2.0
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        1.5707963705062866
+      ],
+      "scale": [
+        3.0,
+        2.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.007",
+        "vertices_count": 8,
+        "polygons_count": 3,
+        "materials": [
+          "Plaster wall.001"
+        ]
+      }
+    },
+    {
+      "name": "Sidewall_2",
+      "type": "MESH",
+      "location": [
+        -8.0,
+        -1.0,
+        2.0
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        1.5707963705062866
+      ],
+      "scale": [
+        3.0,
+        2.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.008",
+        "vertices_count": 8,
+        "polygons_count": 3,
+        "materials": [
+          "Plaster wall.002"
+        ]
+      }
+    },
+    {
       "name": "Sufit",
       "type": "MESH",
       "location": [
         0.0,
-        0.0,
-        4.002792835235596
+        -1.0,
+        4.0027899742126465
       ],
       "rotation_euler": [
         0.0,
@@ -1095,7 +1149,7 @@
       ],
       "scale": [
         8.0,
-        2.0,
+        3.0,
         1.0
       ],
       "mesh": {
@@ -1133,6 +1187,33 @@
           "Plaster wall"
         ]
       }
+    },
+    {
+      "name": "Wall_2",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -4.0,
+        2.0
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        8.0,
+        2.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane.009",
+        "vertices_count": 8,
+        "polygons_count": 3,
+        "materials": [
+          "Plaster wall.003"
+        ]
+      }
     }
   ],
   "materials": [
@@ -1146,11 +1227,11 @@
       "textures": [
         {
           "node": "Image Texture",
-          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35970/0.jpg"
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35971/0.jpg"
         },
         {
           "slot": "Base Color",
-          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35970/0.jpg"
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35971/0.jpg"
         }
       ]
     },
@@ -1229,7 +1310,103 @@
       ]
     },
     {
+      "name": "Plaster wall.001",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness_attribute": "Image Texture.002",
+        "roughness": 0.5
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_height.jpg"
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_diffuse.jpg"
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_roughness.jpg"
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_normal.jpg"
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_ao.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Plaster wall.002",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness_attribute": "Image Texture.002",
+        "roughness": 0.5
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_height.jpg"
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_diffuse.jpg"
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_roughness.jpg"
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_normal.jpg"
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_ao.jpg"
+        }
+      ]
+    },
+    {
       "name": "Plaster wall",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness_attribute": "Image Texture.002",
+        "roughness": 0.5
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_height.jpg"
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_diffuse.jpg"
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_roughness.jpg"
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_normal.jpg"
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_ao.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Plaster wall.003",
       "use_nodes": true,
       "properties": {
         "attribute": "Mix",
