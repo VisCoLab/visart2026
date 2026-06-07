@@ -1,7 +1,12 @@
 import bpy
 import random
 import os
+import math
+from mathutils import Vector
 
+def move_local(obj, x=0.0, y=0.0, z=0.0):
+    delta = Vector((x, y, z))
+    obj.location += obj.matrix_world.to_quaternion() @ delta
 
 def get_original_settings() -> dict[str:dict]:
     og = dict()
@@ -15,29 +20,28 @@ def get_original_settings() -> dict[str:dict]:
     
     return og
 
-def move_cameras(translation_strength: float = 0.2,
-                 rotation_speed: float = 0.1):
+def move_cameras(translation: bool,
+                 rotation: bool,
+                 translation_y_range: float = 0.6,
+                 translation_z_range: float = 0.2,
+                 rotation_range: float = 5.):
+
     cameras = bpy.data.collections.get("Cameras")
-    
+
     for cam in cameras.objects:
-        base_loc = cam.location.copy()
-        base_rot = cam.rotation_euler.copy()
-        s = random.choice([-1, 1])
-        
-        dx = s*(random.random() * 3.0) * translation_strength
-        dy = s*(random.random() * 3.0) * translation_strength
-        dz = s*(random.random() * 3.0) * translation_strength * 0.5
-        
-        cam.location = (
-            base_loc.x + dx,
-            base_loc.y + dy,
-            base_loc.z + dz
-        )
-        cam.rotation_euler = (
-            base_rot.x,
-            base_rot.y,
-            base_rot.z  + s*random.random()*rotation_speed
-        )
+        if translation:
+            dy = random.uniform(-translation_y_range, translation_y_range)
+            dz = random.uniform(-translation_z_range, translation_z_range)
+            
+            move_local(cam, 0, dy, dz)
+
+        if rotation:
+            base_rot = cam.rotation_euler.copy()
+            cam.rotation_euler = (
+                base_rot.x,
+                base_rot.y,
+                base_rot.z  + math.radians(random.uniform(-rotation_range, rotation_range))
+            )
         
 def reset_cameras(original_settings: dict):
     cameras = bpy.data.collections.get("Cameras")
@@ -46,9 +50,3 @@ def reset_cameras(original_settings: dict):
         data = original_settings[cam.name]
         cam.location = data["loc"]
         cam.rotation_euler = data["rot"]
-
-if __name__=="__main__":
-    og = get_original_settings()
-    move_cameras()
-    sleep(5)
-    reset_cameras(og)

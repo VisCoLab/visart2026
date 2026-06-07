@@ -33,6 +33,14 @@ def parse_cli_args():
                         help='Range (MIN MAX) in degrees for random light spread (default 60 180)')
     parser.add_argument('--render-resolution', nargs=2, type=int, metavar=('W', 'H'), default=(1920, 1080),
                         help='Render resolution to save images as two integers: WIDTH HEIGHT')
+    parser.add_argument('--camera-modifiers', nargs='+', choices=('translation','rotation'), default=['translation', 'rotation'],
+                        help='Camera modifiers that will be applied for each render frame (defaults to translation and rotation)')
+    parser.add_argument('--trans-y', type=float, default=0.6,
+                        help='Translation Y range magnitude for camera translation (float, default 0.6)')
+    parser.add_argument('--trans-z', type=float, default=0.2,
+                        help='Translation Z range magnitude for camera translation (float, default 0.2)')
+    parser.add_argument('--rot-range', type=float, default=5.0,
+                        help='Rotation range in degrees for camera rotation (float, default 5.0)')
 
     argv = sys.argv
     if '--' in argv:
@@ -78,6 +86,10 @@ def parse_cli_args():
         'light_shape': args.light_shape,
         'light_spread': (int(ls_min), int(ls_max)),
         'render_resolution': render_res,
+        'camera_modifiers': tuple(args.camera_modifiers),
+        'trans_y': args.trans_y,
+        'trans_z': args.trans_z,
+        'rot_range': args.rot_range,
     }
 
 if __name__=="__main__":
@@ -96,6 +108,13 @@ if __name__=="__main__":
     res_x, res_y = args['render_resolution']
 
     light_shapes = ["SQUARE", "DISK"] if l_shape=='random' else [l_shape.upper()]
+
+    camera_mods = args['camera_modifiers']
+    translation = True if 'translation' in camera_mods else 0.0
+    rotation = True if 'rotation' in camera_mods else 0.0
+    trans_y = args['trans_y']
+    trans_z = args['trans_z']
+    rot_range = args['rot_range']
 
     canvas_name = "canvas"
     frame_name = "frame"
@@ -146,7 +165,11 @@ if __name__=="__main__":
         spread = random.choice([_ for _ in range(spread_min,spread_max)])
         mod_lights(shape, spread)
         reset_floor('Ground')
-        move_cameras()
+        move_cameras(translation=translation,
+                     rotation=rotation,
+                     translation_y_range=trans_y,
+                     translation_z_range=trans_z,
+                     rotation_range=rot_range)
 
         datapoint = counter // FPD
         frame_in_dp = counter % FPD
