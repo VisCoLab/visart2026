@@ -9,3 +9,4 @@ __pycache__/
 out/
 renders/
 slurm-*.out
+blender/basic.blend1
