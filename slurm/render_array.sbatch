@@ -29,7 +29,7 @@ SCENE="$REPO/blender/basic.blend"
 ENABLE_GPU="$REPO/blender/src/enable_gpu.py"
 MAIN="$REPO/blender/src/main.py"
 DATA_PATH="$REPO/data/paintings_train_images_unique.json"
-SAVE_BASE="/mnt/storage_5/scratch/pl0896-03/visart-dataset"
+SAVE_BASE="${VISART_SAVE_BASE:-/mnt/storage_5/scratch/pl0896-03/visart-dataset}"
 
 PER_SHARD=1000
 TOTAL=$(grep -c '^"' "$DATA_PATH")               # number of paths in the manifest
