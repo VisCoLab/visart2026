@@ -17,5 +17,5 @@ def reset_floor(floor_name: str):
         obj.data.materials.append(mat)
 
 if __name__=="__main__":
-    floor_name = "Ground"
+    floor_name = "Floor"
     reset_floor(floor_name)
