@@ -48,11 +48,11 @@ Instead of `scene.blend` you can pass your own `.blend` file, or run Blender wit
 	- Example: `--camera-modifiers both`
 
 
-- `--trans-y F` : translation magnitude along the camera Y axis used when camera translation is enabled (float). Defaults to `0.5` in the script.
+- `--trans-y F` : translation jitter magnitude along the **world** Y axis used when camera translation is enabled (float); positions are sampled within ±F. Defaults to `0.5` in the script.
 	- Example: `--trans-y 0.5`
 
 
-- `--trans-z F` : translation magnitude along the camera Z axis used when camera translation is enabled (float). Defaults to `1.0` in the script.
+- `--trans-z F` : translation jitter magnitude along the **world** Z axis (height) used when camera translation is enabled (float); positions are sampled within ±F. Defaults to `1.0` in the script.
 	- Example: `--trans-z 1.0`
 
 NOTE: The values shown above match the current defaults in `main.py` (`--trans-y 0.5`, `--trans-z 1.0`). If you rely on the README for reproducible runs, prefer passing explicit values on the command line.
@@ -92,6 +92,14 @@ blender -b scene.blend --python /path/to/main.py -- \
 ```bash
 blender -b scene.blend --python /path/to/main.py -- \
 	--render-frames 10 10 --render-mode rgb --data-path /mnt/images --save-path /mnt/save
+```
+
+- Render only the `30` and `90` cameras with a frozen room (no wall/floor/light/frame re-randomization between frames), no camera jitter, and glass always present:
+
+```bash
+blender -b scene.blend --python /path/to/main.py -- \
+	--render-frames 1 10 --render-mode rgb --data-path /mnt/images --save-path /mnt/save \
+	--cameras 30 90 --camera-modifiers none --bake-walls-floor --bake-lights --bake-frames --glass-probability 1.0
 ```
 
 **Help / debug**

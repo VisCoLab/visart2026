@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A **headless Blender synthetic-data pipeline** (`visart2026`). It renders a 3D art-gallery scene of a framed picture and produces paired **RGB / mask / depth** images plus per-datapoint metadata — i.e. a training-data generator for computer vision. Each rendered "datapoint" loads a different source image onto the canvas and randomizes lighting, floor material, and camera pose.
+A **headless Blender synthetic-data pipeline** (`visart2026`). It renders a 3D art-gallery scene of a framed picture and produces paired **RGB / mask / depth** images plus per-datapoint metadata — i.e. a training-data generator for computer vision. Each rendered "datapoint" loads a different source image onto the canvas and randomizes lighting, wall/floor/roof appearance, frame variant and color, glass presence, and camera pose (most of it via Scene Time-driven Geometry Nodes — see the `.blend` contract below; the `--bake-*` flags freeze parts of it).
 
 Everything under `blender/src/` runs **inside Blender's bundled Python** (`import bpy`). These are not standalone scripts — they cannot run under a system `python3`. They import only `bpy` + the Python stdlib.
 
@@ -22,7 +22,7 @@ vendor/blender-*/blender -b blender/basic.blend \
 
 - `-b` = headless. Everything after `--` is passed to `main.py`'s argparse (Blender swallows args before `--`).
 - `enable_gpu.py` switches Cycles to GPU; omit it for CPU rendering. It must precede `main.py` so both run in the same Blender session.
-- See all flags: `… --python blender/src/main.py -- --help`. Full reference: [blender/README.md](blender/README.md). Key ones: `--fpd` (frames per datapoint), `--data-index` (0-based start offset into the sorted file list), `--margin`, `--light-shape {square,disk,random}`, `--light-spread MIN MAX`, `--render-resolution W H`.
+- See all flags: `… --python blender/src/main.py -- --help`. Full reference: [blender/README.md](blender/README.md). Key ones: `--fpd` (frames per datapoint), `--data-index` (0-based start offset into the sorted file list), `--margin`, `--light-shape {square,disk,random}`, `--light-spread MIN MAX`, `--render-resolution W H`, `--cameras {30,60,90,120,150}…`, `--camera-modifiers {translation,rotation,both,none}`, `--glass-probability P`, `--bake-walls-floor` / `--bake-lights` / `--bake-frames` (freeze GN randomization).
 - **On the cluster, submit via SLURM** — do not render on the login node: `sbatch slurm/render.sbatch` (see below).
 
 There is **no build, lint, or test setup** — do not invent one. The only dependency beyond Blender is optional **PyYAML** (metadata falls back to JSON if absent).
@@ -41,16 +41,17 @@ so the sibling modules (`camera_settings`, `frame_loader`, `floor_setter`, `mod_
 
 `basic.blend` must contain specific named datablocks; the code looks them up by string and will `KeyError` otherwise:
 
-- **Objects**: `canvas` (the picture plane), `frame`, `glass`, `plakietka` (the wall placard), `light` (an area light), `Ground` (the floor).
-- **Collection**: `Cameras` — every camera in it renders each datapoint. The scene ships **5** (`front`, `right upper`, `left upper`, `right bottom`, `left bottom`), so N frames produce **N×5** images per mode.
+- **Objects**: `canvas` (the picture plane), `frame`, `glass`, `plakietka` (the wall placard), `light` (an area light), `Floor`, `Wall`, `Roof`, `Light instanced`, `Painting instanced`. The last five carry `GeometryNodes` modifiers whose trees randomize the scene per frame via `Scene Time` nodes (seeded by the current frame — `main.py` calls `scene.frame_set` each iteration); `gn_handler.py` can strip those nodes to freeze ("bake") parts of the randomization.
+- **Collection**: `Cameras` — cameras are named by viewing angle: `30`, `60`, `90`, `120`, `150`. By default all 5 render each datapoint (N frames → **N×5** images per mode); `--cameras` selects a subset by these names.
 - **Scene**: named `Scene`.
 - **Compositing node groups**: one per render mode, named exactly `rgb`, `mask`, `depth`. `main.py` switches output via `scene.compositing_node_group = bpy.data.node_groups[<mode>]` — a **Blender 5.0+** property that replaced `scene.node_tree`, so the visual pass logic lives in the `.blend`'s compositor, not in Python.
-- **Floor materials**: any material whose name starts with `floor_` is a candidate; `floor_setter.py` picks one at random per frame.
+- **Floor materials**: any material whose name starts with `floor_` is a candidate; `floor_setter.py` picks one at random per frame (skipped when `--bake-walls-floor` is set).
+- **GN node labels**: `gn_handler.stale_painting_frame` finds the frame-driving `Scene Time` node in `GEO_Paint` by its **label** `Frame` (node *names* are auto-generated `Scene Time.NNN`); `set_glass_probability` writes to the single `ShaderNodeMath` node in `GEO_Paint`. Renaming/relabeling those nodes in the `.blend` breaks the corresponding flags.
 - **Blender version**: the scene was authored in **Blender 5.1** (`bpy.data.version == (5, 1, 29)`) and needs **5.0+** for `compositing_node_group`. Engine is **Cycles**. The pinned build is **5.1.2** (cluster section).
 
 ## Render loop (`main.py`)
 
-For each frame in `[START, END]`: randomize light shape+spread (`mod_lights`), pick a random `floor_` material (`reset_floor`), jitter all cameras (`move_cameras`); every `FPD` frames advance to the next source image (`load_picture`); then for each render mode × each camera, render a PNG; dump `metadata.json`; restore camera poses (`reset_cameras`). Cameras are jittered from a snapshot taken once before the loop and reset after each datapoint.
+Startup: `set_glass_probability(--glass-probability)` (default 0.25), and any `--bake-walls-floor` / `--bake-lights` / `--bake-frames` flags freeze the corresponding Geometry-Nodes randomization for the whole run. Then, for each frame in `[START, END]`: advance scene time (`frame_set` — this reseeds the GN randomization), randomize light shape+spread (`mod_lights`), pick a random `floor_` material (`reset_floor`, unless baking walls/floor), jitter the selected cameras (`move_cameras`; `--camera-modifiers` is one of `translation|rotation|both|none`, translation jitter is in **world** Y/Z); every `FPD` frames advance to the next source image (`load_picture`); then for each render mode × each selected camera, render a PNG; dump `metadata.json`; restore camera poses (`reset_cameras`). Cameras are jittered from a snapshot taken once before the loop and reset after each datapoint.
 
 **Output layout**: `save_path/<datapoint>/<frame>_<mode>_<camera>.png`, plus one `metadata.json` per datapoint folder. Source images come from a directory (sorted by name) **or** a `.json` manifest of paths (kept in order), and are consumed sequentially starting at `--data-index`; running past the end raises `IndexError` (no wraparound).
 
@@ -58,7 +59,8 @@ For each frame in `[START, END]`: randomize light shape+spread (`mod_lights`), p
 - `main.py` — CLI parsing + the render loop (the file you `--python` for rendering).
 - `enable_gpu.py` — enables Cycles GPU (OptiX → CUDA fallback) for headless renders; run via `--python` *before* `main.py`. No-op if no GPU is present.
 - `frame_loader.py::load_picture` — loads the image, scales `canvas`/`frame`/`glass` to its aspect ratio, wires the image into the canvas material's Principled BSDF Base Color.
-- `camera_settings.py` — snapshot / random-jitter / restore camera transforms.
+- `camera_settings.py` — snapshot / random-jitter / restore camera transforms (operates on an explicit camera list).
+- `gn_handler.py` — freezes Geometry-Nodes randomization (removes `Scene Time` nodes, optionally by name/label) for the `--bake-*` flags, and sets the glass-appearance probability in `GEO_Paint`.
 - `floor_setter.py`, `mod_lights.py`, `placard_resetter.py`, `placard_loader.py` — per-element randomization/loading helpers (`placard_*` handle the wall placard, Polish *plakietka*).
 - `metadata_handler.py::dump_scene_metadata` — robustly serializes visible objects + materials (resolving Principled inputs through node links and Geometry-Nodes attributes) to YAML, or JSON if PyYAML is missing. Note: output always uses a `metadata.json` filename even when the content is YAML.
 
