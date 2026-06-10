@@ -16,8 +16,12 @@ def _turnoff_gn_randomization_by_name(obj: object, node_names: list[str]):
     gn_modifier = obj.modifiers["GeometryNodes"]
     node_tree = gn_modifier.node_group
 
+    # match node labels as well as names: labels are what the UI shows and what
+    # the scene author sets (e.g. the 'Frame' Scene Time node in GEO_Paint)
     to_remove = [
-        n for n in node_tree.nodes if (n.bl_idname == "GeometryNodeInputSceneTime" and n.name in node_names)
+        n for n in node_tree.nodes
+        if n.bl_idname == "GeometryNodeInputSceneTime"
+        and (n.name in node_names or n.label in node_names)
     ]
 
     for n in to_remove:

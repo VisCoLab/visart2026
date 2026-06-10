@@ -66,14 +66,14 @@ NOTE: The values shown above match the current defaults in `main.py` (`--trans-y
 - `--glass-probability F` : probability that a glass sheet will appear in front of the rendered painting (float between 0.0 and 1.0). Defaults to `0.25`.
 	- Example: `--glass-probability 0.5`
 
-- `--bake-walls-floor BOOL` : when true, prevents walls and floor from randomization between render frames (useful for reproducible backgrounds). Defaults to `False`.
-	- Example: `--bake-walls-floor True`
+- `--bake-walls-floor` : flag; when set, prevents walls and floor from randomization between render frames (useful for reproducible backgrounds). Off by default.
+	- Example: `--bake-walls-floor`
 
-- `--bake-lights BOOL` : when true, prevents lights from randomization between render frames. Defaults to `False`.
-	- Example: `--bake-lights True`
+- `--bake-lights` : flag; when set, prevents lights from randomization between render frames. Off by default.
+	- Example: `--bake-lights`
 
-- `--bake-frames BOOL` : when true, prevents painting frames from randomization between render frames. Defaults to `False`.
-	- Example: `--bake-frames True`
+- `--bake-frames` : flag; when set, prevents painting frames from randomization between render frames. Off by default.
+	- Example: `--bake-frames`
 
 NOTE: When you run the script via `blender --python`, all script arguments must be given after the `--` separator, e.g. `-- --render-frames 1 10`.
 

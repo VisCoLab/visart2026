@@ -52,12 +52,12 @@ def parse_cli_args():
                         help='Selection of camera angles to render scenes from (defaults to all choices)')
     parser.add_argument('--glass-probability', type=float, default=0.25,
                         help='Probability with which a glass sheet will appear in front of rendered painting (float, defaults to 0.25)')
-    parser.add_argument('--bake-walls-floor', type=bool, default=False,
-                        help='If true, prevents walls and floor from randomization between render frames')
-    parser.add_argument('--bake-lights', type=bool, default=False,
-                        help='If true, prevents lights from randomization between render frames')
-    parser.add_argument('--bake-frames', type=bool, default=False,
-                        help='If true, prevents painting frames from randomization between render frames')
+    parser.add_argument('--bake-walls-floor', action='store_true',
+                        help='If set, prevents walls and floor from randomization between render frames')
+    parser.add_argument('--bake-lights', action='store_true',
+                        help='If set, prevents lights from randomization between render frames')
+    parser.add_argument('--bake-frames', action='store_true',
+                        help='If set, prevents painting frames from randomization between render frames')
     
 
     argv = sys.argv
@@ -148,7 +148,7 @@ if __name__=="__main__":
     set_glass_probability(glass_probability)
 
     bakery = {
-        'walls': args['bake_walls_floor'],
+        'walls': args['bake_walls'],
         'lights': args['bake_lights'],
         'frames': args['bake_frames']
     }
@@ -208,7 +208,8 @@ if __name__=="__main__":
         shape = random.choice(light_shapes)
         spread = random.choice([_ for _ in range(spread_min,spread_max)])
         mod_lights(shape, spread)
-        reset_floor('Floor') if bakery['walls'] else 0
+        if not bakery['walls']:
+            reset_floor('Floor')
         move_cameras(cams=cameras,
                      translation=translation,
                      rotation=rotation,
@@ -230,7 +231,7 @@ if __name__=="__main__":
         
         save_folder = save_path / f'{datapoint}'
         for comp in renders:
-            for camera in cameras.objects:
+            for camera in cameras:
                 bpy.context.scene.camera = camera
                 bpy.context.scene.compositing_node_group = bpy.data.node_groups[comp]
                 filename = f'{frame_in_dp}'+"_"+comp+f'_{camera.name}'+".png"
