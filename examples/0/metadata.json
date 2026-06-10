@@ -33,6 +33,101 @@
   },
   "objects": [
     {
+      "name": "120",
+      "type": "CAMERA",
+      "location": [
+        -1.9077866077423096,
+        -1.4756017923355103,
+        1.4244755506515503
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        -0.5077425241470337
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "150",
+      "type": "CAMERA",
+      "location": [
+        -5.577260494232178,
+        -1.4997111558914185,
+        2.994365930557251
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        -5.788907131432097e-10,
+        -1.0527522563934326
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "30",
+      "type": "CAMERA",
+      "location": [
+        6.3887176513671875,
+        -1.3910834789276123,
+        1.0305759906768799
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        -0.0,
+        1.06153404712677
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "60",
+      "type": "CAMERA",
+      "location": [
+        2.3597867488861084,
+        -1.0938410758972168,
+        1.3737280368804932
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        -0.0,
+        0.4417821764945984
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "90",
+      "type": "CAMERA",
+      "location": [
+        0.306377112865448,
+        -1.0495917797088623,
+        2.1772921085357666
+      ],
+      "rotation_euler": [
+        1.5707963705062866,
+        0.0,
+        0.055117327719926834
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
       "name": "canvas",
       "type": "MESH",
       "location": [
@@ -46,8 +141,8 @@
         0.0
       ],
       "scale": [
-        0.9020618796348572,
         0.699999988079071,
+        0.9333333373069763,
         1.0
       ],
       "mesh": {
@@ -56,6 +151,33 @@
         "polygons_count": 1,
         "materials": [
           "CanvasMaterial"
+        ]
+      }
+    },
+    {
+      "name": "Floor",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        8.0,
+        3.0,
+        1.0
+      ],
+      "mesh": {
+        "name": "Plane",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": [
+          "floor_2"
         ]
       }
     },
@@ -73,8 +195,8 @@
         0.0
       ],
       "scale": [
-        0.9110825061798096,
         0.7070000171661377,
+        0.9426666498184204,
         1.0
       ],
       "mesh": {
@@ -817,25 +939,6 @@
       }
     },
     {
-      "name": "front",
-      "type": "CAMERA",
-      "location": [
-        0.30427253246307373,
-        -1.2441715002059937,
-        1.5646793842315674
-      ],
-      "rotation_euler": [
-        1.5707963705062866,
-        0.0,
-        0.016520081087946892
-      ],
-      "scale": [
-        1.0,
-        1.0,
-        1.0
-      ]
-    },
-    {
       "name": "glass",
       "type": "MESH",
       "location": [
@@ -849,9 +952,9 @@
         0.0
       ],
       "scale": [
-        0.9110825061798096,
+        0.7070000171661377,
         0.009999999776482582,
-        0.7070000171661377
+        0.9426666498184204
       ],
       "mesh": {
         "name": "Cube.009",
@@ -861,71 +964,6 @@
           "glass"
         ]
       }
-    },
-    {
-      "name": "Ground",
-      "type": "MESH",
-      "location": [
-        0.0,
-        -1.0,
-        0.0
-      ],
-      "rotation_euler": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "scale": [
-        8.0,
-        3.0,
-        1.0
-      ],
-      "mesh": {
-        "name": "Plane",
-        "vertices_count": 4,
-        "polygons_count": 1,
-        "materials": [
-          "floor_4"
-        ]
-      }
-    },
-    {
-      "name": "left bottom",
-      "type": "CAMERA",
-      "location": [
-        -2.5524396896362305,
-        0.39332836866378784,
-        1.4363183975219727
-      ],
-      "rotation_euler": [
-        1.720470666885376,
-        -5.788907131432097e-10,
-        -1.0725679397583008
-      ],
-      "scale": [
-        0.45052623748779297,
-        0.45052623748779297,
-        0.45052623748779297
-      ]
-    },
-    {
-      "name": "left upper",
-      "type": "CAMERA",
-      "location": [
-        -2.143338441848755,
-        -1.1816718578338623,
-        3.28137469291687
-      ],
-      "rotation_euler": [
-        1.2322063446044922,
-        0.0,
-        -0.4843508005142212
-      ],
-      "scale": [
-        0.30529069900512695,
-        0.30529075860977173,
-        0.30529069900512695
-      ]
     },
     {
       "name": "light",
@@ -972,7 +1010,26 @@
       }
     },
     {
-      "name": "paint_inst",
+      "name": "Painting",
+      "type": "EMPTY",
+      "location": [
+        0.1641024947166443,
+        2.0000009536743164,
+        1.9196466207504272
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "Painting instanced",
       "type": "MESH",
       "location": [
         1.0274889469146729,
@@ -997,29 +1054,10 @@
       }
     },
     {
-      "name": "Painting",
-      "type": "EMPTY",
-      "location": [
-        0.1641024947166443,
-        2.0000009536743164,
-        1.9196466207504272
-      ],
-      "rotation_euler": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "scale": [
-        1.0,
-        1.0,
-        1.0
-      ]
-    },
-    {
       "name": "plakietka",
       "type": "MESH",
       "location": [
-        1.8221650123596191,
+        1.4140000343322754,
         -0.004999999888241291,
         0.0
       ],
@@ -1043,36 +1081,44 @@
       }
     },
     {
-      "name": "right bottom",
-      "type": "CAMERA",
+      "name": "Roof",
+      "type": "MESH",
       "location": [
-        2.3415026664733887,
-        -1.2452588081359863,
-        1.3742873668670654
+        0.0,
+        -1.0,
+        4.0027899742126465
       ],
       "rotation_euler": [
-        1.739411473274231,
-        -0.0,
-        0.5372637510299683
+        0.0,
+        0.0,
+        0.0
       ],
       "scale": [
-        1.0,
-        1.0,
+        8.0,
+        3.0,
         1.0
-      ]
+      ],
+      "mesh": {
+        "name": "Plane.003",
+        "vertices_count": 4,
+        "polygons_count": 1,
+        "materials": [
+          "Plaster wall"
+        ]
+      }
     },
     {
-      "name": "right upper",
-      "type": "CAMERA",
+      "name": "Room",
+      "type": "EMPTY",
       "location": [
-        3.6733484268188477,
-        -0.08263187110424042,
-        2.121450901031494
+        0.0,
+        0.0,
+        0.0
       ],
       "rotation_euler": [
-        1.3728032112121582,
-        -0.0,
-        1.052289366722107
+        0.0,
+        0.0,
+        0.0
       ],
       "scale": [
         1.0,
@@ -1131,33 +1177,6 @@
         "polygons_count": 3,
         "materials": [
           "Plaster wall.002"
-        ]
-      }
-    },
-    {
-      "name": "Sufit",
-      "type": "MESH",
-      "location": [
-        0.0,
-        -1.0,
-        4.0027899742126465
-      ],
-      "rotation_euler": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "scale": [
-        8.0,
-        3.0,
-        1.0
-      ],
-      "mesh": {
-        "name": "Plane.003",
-        "vertices_count": 4,
-        "polygons_count": 1,
-        "materials": [
-          "Plaster wall"
         ]
       }
     },
@@ -1227,13 +1246,24 @@
       "textures": [
         {
           "node": "Image Texture",
-          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35968/0.jpg"
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35155/0.jpg"
         },
         {
           "slot": "Base Color",
-          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35968/0.jpg"
+          "image": "/mnt/storage_6/project_data/pl0896-03/met-dataset/MET/35155/0.jpg"
         }
       ]
+    },
+    {
+      "name": "floor_2",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness_attribute": "Group.001",
+        "roughness": 0.5
+      },
+      "textures": []
     },
     {
       "name": "Frame",
@@ -1263,43 +1293,6 @@
       "textures": []
     },
     {
-      "name": "floor_4",
-      "use_nodes": true,
-      "properties": {
-        "attribute": "Mix",
-        "metallic_attribute": "Image Texture.002",
-        "metallic": 0.0,
-        "roughness_attribute": "Invert Color",
-        "roughness": 0.5
-      },
-      "textures": [
-        {
-          "node": "Image Texture",
-          "image": "//assets/materials/wooden-flooring_e96911ae-5df8-4c8d-beae-8d3fa6909567/textures_2k/floor_height.jpg"
-        },
-        {
-          "node": "Image Texture.001",
-          "image": "//assets/materials/wooden-flooring_e96911ae-5df8-4c8d-beae-8d3fa6909567/textures_2k/floor_diffuse.jpg"
-        },
-        {
-          "node": "Image Texture.002",
-          "image": "//assets/materials/wooden-flooring_e96911ae-5df8-4c8d-beae-8d3fa6909567/textures_2k/floor_metallic.jpg"
-        },
-        {
-          "node": "Image Texture.003",
-          "image": "//assets/materials/wooden-flooring_e96911ae-5df8-4c8d-beae-8d3fa6909567/textures_2k/floor_glossiness.jpg"
-        },
-        {
-          "node": "Image Texture.004",
-          "image": "//assets/materials/wooden-flooring_e96911ae-5df8-4c8d-beae-8d3fa6909567/textures_2k/floor_normal.jpg"
-        },
-        {
-          "node": "Image Texture.005",
-          "image": "//assets/materials/wooden-flooring_e96911ae-5df8-4c8d-beae-8d3fa6909567/textures_2k/floor_ao.jpg"
-        }
-      ]
-    },
-    {
       "name": "plakietka",
       "use_nodes": true,
       "properties": {
@@ -1311,6 +1304,38 @@
         {
           "node": "Image Texture",
           "image": "//assets/textures/plk.png"
+        }
+      ]
+    },
+    {
+      "name": "Plaster wall",
+      "use_nodes": true,
+      "properties": {
+        "attribute": "Mix",
+        "metallic": 0.0,
+        "roughness_attribute": "Image Texture.002",
+        "roughness": 0.5
+      },
+      "textures": [
+        {
+          "node": "Image Texture",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_height.jpg"
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_diffuse.jpg"
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_roughness.jpg"
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_normal.jpg"
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_ao.jpg"
         }
       ]
     },
@@ -1348,38 +1373,6 @@
     },
     {
       "name": "Plaster wall.002",
-      "use_nodes": true,
-      "properties": {
-        "attribute": "Mix",
-        "metallic": 0.0,
-        "roughness_attribute": "Image Texture.002",
-        "roughness": 0.5
-      },
-      "textures": [
-        {
-          "node": "Image Texture",
-          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_height.jpg"
-        },
-        {
-          "node": "Image Texture.001",
-          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_diffuse.jpg"
-        },
-        {
-          "node": "Image Texture.002",
-          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_roughness.jpg"
-        },
-        {
-          "node": "Image Texture.003",
-          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_normal.jpg"
-        },
-        {
-          "node": "Image Texture.004",
-          "image": "//assets/materials/plaster-wall_48c8f818-1ec7-4713-9e1e-503b69861010/textures_2k/plaster_wall_21_94_ao.jpg"
-        }
-      ]
-    },
-    {
-      "name": "Plaster wall",
       "use_nodes": true,
       "properties": {
         "attribute": "Mix",
