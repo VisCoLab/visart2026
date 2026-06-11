@@ -38,8 +38,9 @@ Instead of `scene.blend` you can pass your own `.blend` file, or run Blender wit
 - `--light-shape SHAPE` : shape of the light sources; one of `square`, `disk`, `random` (default `random`).
 	- Example: `--light-shape square`
 
-- `--light-spread MIN MAX` : range (in degrees) from which the light spread angle is drawn, from MIN to MAX. Defaults to `60 180`.
+- `--light-spread MIN MAX` : range (in degrees) from which the light spread angle is drawn, from MIN to MAX. Defaults to `60 180`. Passing `MIN` equal to `MAX` pins the spread to that exact value (no per-frame randomization).
 	- Example: `--light-spread 45 120`
+	- Pinned example: `--light-spread 120 120`
 
 - `--render-resolution WIDTH HEIGHT` : resolution at which renders are saved (two ints: width and height).
 	- Example: `--render-resolution 1024 768`

@@ -37,7 +37,7 @@ def parse_cli_args():
     parser.add_argument('--light-shape', choices=('square', 'disk', 'random'), default='random',
                         help='Shape of lights in scene: square, disk or random (default)')
     parser.add_argument('--light-spread', nargs=2, type=int, metavar=('MIN', 'MAX'), default=(60, 180),
-                        help='Range (MIN MAX) in degrees for random light spread (default 60 180)')
+                        help='Range (MIN MAX) in degrees for random light spread (default 60 180); MIN == MAX pins the spread to that value')
     parser.add_argument('--render-resolution', nargs=2, type=int, metavar=('W', 'H'), default=(1920, 1080),
                         help='Render resolution to save images as two integers: WIDTH HEIGHT')
     parser.add_argument('--camera-modifiers', type=str, choices=('translation','rotation','both','none'), default='both',
@@ -206,7 +206,10 @@ if __name__=="__main__":
         bpy.context.view_layer.update()
 
         shape = random.choice(light_shapes)
-        spread = random.choice([_ for _ in range(spread_min,spread_max)])
+        if spread_min == spread_max:
+            spread = spread_min
+        else:
+            spread = random.choice([_ for _ in range(spread_min,spread_max)])
         mod_lights(shape, spread)
         if not bakery['walls']:
             reset_floor('Floor')
