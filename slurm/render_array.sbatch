@@ -33,8 +33,12 @@ SAVE_BASE="${VISART_SAVE_BASE:-/mnt/storage_5/scratch/pl0896-03/visart-dataset}"
 # extra main.py flags appended to the invocation (e.g. ablation bakes):
 #   VISART_EXTRA_ARGS="--bake-lights --glass-probability 0" sbatch slurm/render_array.sbatch
 EXTRA_ARGS="${VISART_EXTRA_ARGS:-}"
-
-PER_SHARD=1000
+# render resolution (two ints) and paintings per shard; for higher resolutions
+# use smaller shards and a larger --array so each task fits the time limit,
+# e.g.: VISART_RENDER_RES="1024 1024" VISART_PER_SHARD=245 \
+#           sbatch --array=0-19 slurm/render_array.sbatch
+RENDER_RES="${VISART_RENDER_RES:-512 512}"
+PER_SHARD="${VISART_PER_SHARD:-1000}"
 TOTAL=$(grep -c '^"' "$DATA_PATH")               # number of paths in the manifest
 DATA_INDEX=$(( SLURM_ARRAY_TASK_ID * PER_SHARD ))
 N=$PER_SHARD
@@ -56,7 +60,7 @@ nvidia-smi --query-gpu=name --format=csv,noheader || true
     --data-path "$DATA_PATH" \
     --data-index "$DATA_INDEX" \
     --save-path "$SAVE_PATH" \
-    --render-resolution 512 512 \
+    --render-resolution $RENDER_RES \
     $EXTRA_ARGS
 
 echo "shard $SLURM_ARRAY_TASK_ID DONE: $(find "$SAVE_PATH" -name '*.png' | wc -l) PNGs"

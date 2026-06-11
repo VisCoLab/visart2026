@@ -24,7 +24,8 @@ set -euo pipefail
 
 SRC_BASE="${VISART_SRC_BASE:-/mnt/storage_5/scratch/pl0896-03/visart-dataset-v2}"
 DEST="${VISART_DEST:-/mnt/storage_6/project_data/pl0896-03/visart-dataset-v2}"
-PER_SHARD=1000
+# must match the VISART_PER_SHARD the render array ran with
+PER_SHARD="${VISART_PER_SHARD:-1000}"
 
 mkdir -p "$DEST"
 total=0
