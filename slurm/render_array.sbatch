@@ -30,6 +30,9 @@ ENABLE_GPU="$REPO/blender/src/enable_gpu.py"
 MAIN="$REPO/blender/src/main.py"
 DATA_PATH="$REPO/data/paintings_train_images_unique.json"
 SAVE_BASE="${VISART_SAVE_BASE:-/mnt/storage_5/scratch/pl0896-03/visart-dataset}"
+# extra main.py flags appended to the invocation (e.g. ablation bakes):
+#   VISART_EXTRA_ARGS="--bake-lights --glass-probability 0" sbatch slurm/render_array.sbatch
+EXTRA_ARGS="${VISART_EXTRA_ARGS:-}"
 
 PER_SHARD=1000
 TOTAL=$(grep -c '^"' "$DATA_PATH")               # number of paths in the manifest
@@ -53,6 +56,7 @@ nvidia-smi --query-gpu=name --format=csv,noheader || true
     --data-path "$DATA_PATH" \
     --data-index "$DATA_INDEX" \
     --save-path "$SAVE_PATH" \
-    --render-resolution 512 512
+    --render-resolution 512 512 \
+    $EXTRA_ARGS
 
 echo "shard $SLURM_ARRAY_TASK_ID DONE: $(find "$SAVE_PATH" -name '*.png' | wc -l) PNGs"
