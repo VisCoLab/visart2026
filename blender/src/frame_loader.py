@@ -4,7 +4,8 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent))
 from placard_resetter import reset_placard
 
-def load_picture(canvas_name: str,
+def load_picture(frame_idx: int,
+                 canvas_name: str,
                  frame_name: str,
                  glass_name: str,
                  desc_name: str,
@@ -42,7 +43,7 @@ def load_picture(canvas_name: str,
     glass.scale.x = obj.scale.x * margin
     glass.scale.z = obj.scale.y * margin
 
-    reset_placard(canvas_name, desc_name, margin)
+    reset_placard(canvas_name, desc_name, margin, frame_idx)
 
     # ===== MATERIAL =====
 

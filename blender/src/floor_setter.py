@@ -1,7 +1,8 @@
 import bpy
 import random
 
-def reset_floor(floor_name: str):
+def reset_floor(floor_name: str, frame: int):
+    random.seed(frame)
     prefix = "floor_"
 
     materials = [

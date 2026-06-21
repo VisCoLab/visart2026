@@ -1,7 +1,8 @@
 import bpy
 import random
 
-def reset_placard(canvas_name: str, placard_name: str, margin: float):
+def reset_placard(canvas_name: str, placard_name: str, margin: float, frame: int):
+    random.seed(frame)
     canvas = bpy.data.objects[canvas_name]
     placard = bpy.data.objects[placard_name]
 

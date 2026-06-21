@@ -19,13 +19,14 @@ def get_original_settings(cams: list[object]) -> dict[str:dict]:
     
     return og
 
-def move_cameras(cams: list[object],
+def move_cameras(frame: int,
+                 cams: list[object],
                  translation: bool,
                  rotation: bool,
                  translation_y_range: float = 0.5,
                  translation_z_range: float = 1.,
                  rotation_range: float = 5.):
-
+    random.seed(frame)
     for cam in cams:
         if translation:
             base_loc = cam.location.copy()

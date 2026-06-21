@@ -2,7 +2,8 @@ import bpy
 import random
 import math
 
-def mod_lights(shape: str, spread: int):
+def mod_lights(shape: str, spread: int, frame: int):
+    random.seed(frame)
     spread = math.radians(spread)
     lights = bpy.data.objects["light"]
     lights.data.shape = shape

@@ -120,6 +120,7 @@ if __name__=="__main__":
 
     # DATA SETUP
     START, END = args["render_frames"]
+    print(START)
     FPD = args['fpd']
     renders = args['render_mode']
     data_path = args["data_path"]
@@ -194,7 +195,8 @@ if __name__=="__main__":
     # LOOP SETUP
     counter = 0
     loaded_dp = 0
-    load_picture(canvas_name,
+    load_picture(START,
+                 canvas_name,
                  frame_name,
                  glass_name,
                  desc_name,
@@ -210,10 +212,12 @@ if __name__=="__main__":
             spread = spread_min
         else:
             spread = random.choice([_ for _ in range(spread_min,spread_max)])
-        mod_lights(shape, spread)
+        if not bakery['lights']:
+            mod_lights(shape, spread, frame)
         if not bakery['walls']:
-            reset_floor('Floor')
-        move_cameras(cams=cameras,
+            reset_floor('Floor', frame)
+        move_cameras(frame,
+                     cams=cameras,
                      translation=translation,
                      rotation=rotation,
                      translation_y_range=trans_y,
@@ -225,7 +229,8 @@ if __name__=="__main__":
 
         if datapoint != loaded_dp:
             loaded_dp = datapoint
-            load_picture(canvas_name,
+            load_picture(frame,
+                         canvas_name,
                          frame_name,
                          glass_name,
                          desc_name,
