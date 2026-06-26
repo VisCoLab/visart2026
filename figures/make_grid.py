@@ -17,7 +17,7 @@ Images are the SynGallery-1024 renders, read from the on-disk source dataset
 (byte-identical to patryk-bartkowiak/SynGallery-1024).
 
 Reproduce every committed figure (sample_grid_set<S>_<mode>_5x<rows>.png):
-  for s in 1 2; do for rows in 8 7 6; do
+  for s in 1 2; do for rows in 8 7 6 5; do
     python figures/make_grid.py --set $s --mode single  --degree 60 --rows $rows \
         --out figures/sample_grid_set${s}_all60_5x$rows.png
     python figures/make_grid.py --set $s --mode random  --seed 0 --rows $rows \
